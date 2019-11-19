@@ -486,12 +486,14 @@ jobs:
           command: |
             mkdir -p ~/.local/bin
             mkdir ~/node
-            export PATH=~/.local/bin:~/node/bin:/usr/local/opt/binutils/bin:$PATH
+            export PATH=~/.local/bin:~/node/bin:$PATH
 
             brew install \
               binutils \
               cmake \
               gnu-tar
+            ln -s /usr/local/opt/binutils/bin/ar /usr/local/bin/ar
+            ar --version
 
             curl -L https://raw.githubusercontent.com/TerrorJack/node-fetcher/master/node-fetcher.py -o ~/.local/bin/node-fetcher
             chmod u+x ~/.local/bin/node-fetcher
@@ -507,13 +509,13 @@ jobs:
       - run:
           name: Boot
           command: |
-            export PATH=~/.local/bin:~/node/bin:/usr/local/opt/binutils/bin:$PATH
+            export PATH=~/.local/bin:~/node/bin:$PATH
             stack --no-terminal -j4 build --test --no-run-tests
             stack --no-terminal exec ahc-boot
       - run:
           name: Test asterius
           command: |
-            export PATH=~/.local/bin:~/node/bin:/usr/local/opt/binutils/bin:$PATH
+            export PATH=~/.local/bin:~/node/bin:$PATH
             stack --no-terminal test asterius:fib
             stack --no-terminal test asterius:jsffi
             stack --no-terminal test asterius:array
