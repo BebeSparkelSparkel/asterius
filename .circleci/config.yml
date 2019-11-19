@@ -484,13 +484,16 @@ jobs:
       - run:
           name: Install dependencies
           command: |
+            which gcc
+            gcc --version
+            gcc
+
             mkdir -p ~/.local/bin
             mkdir ~/node
             export PATH=~/.local/bin:~/node/bin:$PATH
 
             brew install \
               cmake \
-              gcc \
               gnu-tar
 
             curl -L https://raw.githubusercontent.com/TerrorJack/node-fetcher/master/node-fetcher.py -o ~/.local/bin/node-fetcher
