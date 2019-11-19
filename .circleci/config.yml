@@ -490,6 +490,7 @@ jobs:
 
             brew install \
               cmake \
+              gcc \
               gnu-tar
 
             curl -L https://raw.githubusercontent.com/TerrorJack/node-fetcher/master/node-fetcher.py -o ~/.local/bin/node-fetcher
