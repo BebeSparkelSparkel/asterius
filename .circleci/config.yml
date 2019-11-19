@@ -489,11 +489,8 @@ jobs:
             export PATH=~/.local/bin:~/node/bin:$PATH
 
             brew install \
-              binutils \
               cmake \
               gnu-tar
-            ln -s /usr/local/opt/binutils/bin/ar /usr/local/bin/ar
-            ar --version
 
             curl -L https://raw.githubusercontent.com/TerrorJack/node-fetcher/master/node-fetcher.py -o ~/.local/bin/node-fetcher
             chmod u+x ~/.local/bin/node-fetcher
